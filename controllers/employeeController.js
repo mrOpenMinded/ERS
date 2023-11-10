@@ -2,7 +2,7 @@
 const User = require('../models/user');
 
 // feedback model
-const Feedback = require('../models/Feedback');
+const Feedback = require('../models/feedback');
 
 
 // render the employee's dashboard
