@@ -1,9 +1,3 @@
-// for environment variables
-// require('dotenv').config();
-
-// connect to database
-
-
 // express
 const express = require('express');
 const port=7000;
