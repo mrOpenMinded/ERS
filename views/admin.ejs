@@ -1,0 +1,136 @@
+
+<!-- checking whether user is logged in or not also is admin -->
+<% if(locals.user && locals.user.role ==='Admin') {%>
+    <div class="container-fluid p-4">
+      <!-- admin's info -->
+      <div class="w-100 fw-semibold text-secondary">
+        <span class="fw-bold text-dark">Admin: </span> 
+        <%= user.name %> | <%= user.email %>
+      </div>
+      <hr>
+      <!-- heading -->
+      <h1 class="mx-auto text-center" style="color: #176B87;">All Employees</h1>
+      <!-- list of all the employee -->
+      <div class="d-flex flex-wrap justify-content-center justify-content-md-start">
+        <% for (user of employee) {%>
+          <!-- single employee card -->
+        <div class="card shadow m-2" style="background-color: #D2E0FB; width: 18rem">
+          <div class="card-body">
+            <!-- image -->
+            <img
+              src="/image/manager.png"
+              alt=""
+              style="width: 40px"
+            />
+            <!-- name -->
+            <h5 class="card-title"><%= user.name %></h5>
+            <!-- email -->
+            <h6 class="card-subtitle mb-2 text-secondary"><%= user.email %></h6>
+            <div class="d-flex flex-wrap justify-content-between">
+          
+              <!-- asign review button -->
+              <a
+                href=""
+                class="btn mb-1 my-1 shadow text-white"
+                style="width: 100%; background-color: #FF9B82;"
+                data-bs-toggle="modal"
+                data-bs-target="#user<%= user.id %>"
+                data-bs-whatever="@mdo"
+                ><i class="fa-solid fa-file"></i> Assign review</a
+              >
+              <!-- delete button -->
+              <a
+                href="/dashboard/admin/delete/?id=<%= user._id %>"
+                class="btn btn-danger mb-1 shadow"
+                style="width: 48%"
+                ><i class="fa-solid fa-user-minus"></i> Delete</a
+              >
+              <!-- edit button -->
+              <a
+                href="/dashboard/admin/updateForm/?id=<%= user._id %>"
+                class="btn text-white mb-1 shadow"
+                style="width: 48%; background-color: #279EFF;"
+                ><i class="fa-solid fa-user-pen"></i> Edit</a
+              >
+    
+              <!-- Modal for assigning review -->
+              <div
+                class="modal fade"
+                id="user<%= user.id %>"
+                tabindex="-1"
+                aria-labelledby="<%= user.id %>"
+                aria-hidden="true"
+              >
+                <!-- form for assign review -->
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <!-- heading -->
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">
+                        Assign review
+                      </h1>
+                      <!-- close button -->
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="modal-body">
+                      <form
+                        action="/dashboard/admin/assignReview/?id=<%= user._id %>"
+                        method="POST"
+                      >
+                      <!-- reviewer -->
+                      <div class="mb-3">
+                        <label class="col-form-label">Reviewer:</label>
+                        <input type="text" class="form-control" value="<%= user.email %>" disabled>
+                      </div>
+                        <!-- recipient -->
+                        <div class="mb-3">
+                          <label class="col-form-label"
+                            >Recipient:</label
+                          >
+                          <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            name="recipient"
+                          >
+                            <!-- list of all the recipient -->
+                            <% for (recipient of employee) {%>
+                            <!-- filter the current user from the list of recipient                -->
+                            <% if(recipient.email !=user.email ){ %>
+                            <option value="<%= recipient._id %>">
+                              <%= recipient.email %>
+                            </option>
+                            } <%} %> <%} %>
+                          </select>
+                        </div>
+                        <!-- button for closing -->
+                        <div class="d-flex justify-content-end">
+                          <button
+                            type="button"
+                            class="btn btn-danger mx-2"
+                            data-bs-dismiss="modal"
+                          >
+                            Cancel
+                          </button>
+                          <!-- button for assign -->
+                          <button type="" class="btn btn-primary mx-2">
+                            Assign
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <%} %>
+      </div>
+    </div>
+    <%} %>
+    

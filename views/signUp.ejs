@@ -1,0 +1,77 @@
+
+<!-- sign up form -->
+
+
+<div class="w-100 h-100 d-flex justify-content-center align-items-center">
+    <form
+      action="/create-account"
+      method="POST"
+      class="col-11 col-md-9 col-lg-5 p-2 mt-4 shadow rounded fw-semibold"
+      style="background-color: #cceeff;"
+    >
+      <div class="text-center">
+          <!-- heading -->
+        <h1 style="color: #176B87;">Sign Up</h1>
+      </div>
+      <!-- for name of user -->
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" name="name" id="name" required />
+      </div>
+      <!-- for email of user -->
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          name="email"
+          id="email"
+          required
+        />
+      </div>
+      <!-- for role of user ( admin / employee ) -->
+      <div class="mb-3">
+        <label for="role" class="form-label">Role</label>
+        <select
+          class="form-select"
+          name="role"
+          aria-label="Default select example"
+        >
+          <option value="Employee" name="role">Employee</option>
+          <option value="Admin" name="role">Admin</option>
+        </select>
+      </div>
+      <!-- for password -->
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          name="password"
+          id="password"
+          required
+        />
+      </div>
+      <!-- for confirm password -->
+      <div class="mb-3">
+        <label for="cnf_password" class="form-label">Confirm Password</label>
+        <input
+          type="password"
+          class="form-control"
+          name="cnf_password"
+          id="cnf_password"
+          required
+        />
+      </div>
+      <!-- submit button -->
+      <button type="submit" class="btn btn-primary">Sign Up</button>
+      <!-- login page link -->
+      <div class="text-center">
+        <p>
+          Already have an accout,
+          <a href="/">Sign In</a>
+          instead.
+        </p>
+      </div>
+    </form>
+  </div>

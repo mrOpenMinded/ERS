@@ -1,0 +1,81 @@
+<!-- update employee data form -->
+
+<div class="w-100 h-100 p-5 d-flex justify-content-between flex-wrap">
+    <div class="col-11 col-md-5 h-75 d-flex justify-content-center">
+      <form
+        action="/dashboard/admin/update/?id=<%= employee._id %>"
+        method="POST"
+        class="w-100 h-100 p-2 mt-4 shadow rounded fw-semibold"
+        style="background-color: #cceeff;"
+      >
+          <!-- heading -->
+        <div class="text-center">
+          <h1 style="color: #176B87;">Update Employee</h1>
+        </div>
+        <div class="mb-3">
+          <!-- for usre's name -->
+          <label for="name" class="form-label">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="name"
+            id="name"
+            value="<%= employee.name %>"
+            required
+          />
+        </div>
+        <!-- for user's email -->
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input
+            type="email"
+            class="form-control"
+            name="email"
+            id="email"
+            value="<%= employee.email %>"
+            required
+          />
+        </div>
+        <!-- for user's role ( admin / employee ) -->
+        <div class="mb-3">
+          <label for="role" class="form-label">Role</label>
+          <select
+            class="form-select"
+            name="role"
+            aria-label="Default select example"
+          >   
+              <!-- role options -->
+            <option value="Employee" name="role">Employee</option>
+            <option value="Admin" name="role">Admin</option>
+          </select>
+        </div>
+        <!-- submit button -->
+        <button type="submit" class="btn btn-primary">Update</button>
+      </form>
+    </div>
+  
+  
+    <!-- for showing feedback given to employee by other fellow employees -->
+    <div class="col-12 col-md-5">
+      <!-- heading -->
+      <h2 class="text-center my-2">Feedbacks by others for Employee</h2>
+  
+      <!-- list of feedbacks -->
+      <div
+        class="w-100 d-flex flex-col flex-wrap justify-content-center align-items-center"
+      >
+        <% for( j of feedbacks ) { %>
+  
+        <div class="card w-100 m-2" style="background-color: #DAF5FF;">
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <p class="fw-semibold"><%= j.comment %></p>
+              <footer class="blockquote-footer"><%= j.reviewer.name %></footer>
+            </blockquote>
+          </div>
+        </div>
+  
+        <% } %>
+      </div>
+    </div>
+  </div>

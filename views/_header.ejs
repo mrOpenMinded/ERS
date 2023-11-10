@@ -1,0 +1,87 @@
+<!-- navbar of all pages -->
+
+<nav class="navbar navbar-expand-lg shadow" style="background-color: #CAEDFF">
+  <div class="container-fluid">
+    
+    <!-- brand name (employee review system) -->
+    <a class="navbar-brand fw-bold" href="/">
+        <!-- image -->
+      <img
+        src="/images/brand-logo.png"
+        alt="Logo"
+        width="32"
+        height="32"
+        class="d-inline-block align-text-top"
+      />
+      <!-- heading -->
+      Employee Review
+    </a>
+    <!-- menu button ( visible on small screen ) -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <!-- list of all the button in navbar -->
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-semibold">
+        <!-- button for admin -->
+        <% if(locals.user) { %> <% if( user.role.toString() == 'Admin' ) { %>
+
+        <!-- admin dashboard button -->
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/dashboard/admin">
+            <i class="fa-solid fa-house"></i>
+            Home
+          </a>
+        </li>
+
+        <!-- add employee button -->
+        <li class="nav-item">
+          <a class="nav-link" href="/dashboard/admin/addEmployee">
+            <i class="fa-solid fa-user-plus"></i>
+            Add Employee
+          </a>
+        </li>
+
+        <!-- employee related buttons -->
+        <% } else { %>
+
+            <!-- employee dashboard -->
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/dashboard/employee">
+            <i class="fa-solid fa-house"></i>
+            Home
+          </a>
+        </li>
+
+        <% } %> <% } %>
+      </ul>
+
+      <!-- button to show role and signout -->
+      <div class="navbar-nav fw-semibold">
+        <% if(locals.user) { %>
+        
+        <!-- role of the user ( admin / employee ) -->
+        <a class="nav-link active" aria-current="page" href="#">
+          <i class="fa-solid fa-user"></i>
+          <%= user.role %>
+        </a>    
+
+        <!-- sign out button -->
+        <a class="nav-link" href="/signout">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          Logout
+        </a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,107 @@
+<!-- employee dash board -->
+
+
+<!-- heading  -->
+<h1 class="text-center mt-2" style="color: #176B87;">Employee dashboard</h1>
+
+<!-- show info of employee -->
+<div class="w-100 px-5 my-2 fw-semibold text-secondary">
+  <% if(locals.user) { %>
+    <!-- employee name and email -->
+  <span class="fw-bold text-dark">Employee:</span> <%= user.name %> | <%=
+  user.email %> <% } %>
+
+  <hr />
+</div>
+
+<!-- main container -->
+<div
+  class="w-100 d-flex flex-col flex-md-row px-5 mt-2 justify-content-between flex-wrap"
+>
+
+<!-- list of review assigned to remployee -->
+  <div class="col-12 col-md-5">
+    <!-- heading -->
+    <h2 class="text-center my-2" style="color: #176B87;">Reviews Assigned to you:</h2>
+
+    <div class="w-100 d-flex justify-content-center mt-2 flex-wrap">
+      <% for(let i of assignReviews ) { %>
+
+        <!-- single assign review -->
+      <div class="p-2 w-100 w-md-50 rounded shadow-sm m-3" style="background-color: #DAF5FF; border: 1px solid lightgrey;">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Review</h1>
+            </div>
+            <div class="modal-body">
+              <form
+                method="POST"
+                action="/dashboard/employee/addReview/?id=<%= i._id %>"
+                id="review-form"
+              > 
+              <!-- recipient's email -->
+                <div class="mb-3">
+                  <label for="recipient-name" class="col-form-label fw-semibold"
+                    >Recipient:</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="recipient-name"
+                    value="<%= i.email %>"
+                    disabled
+                  />
+                </div>
+                <!-- message -->
+                <div class="mb-3">
+                  <label for="message-text" class="col-form-label fw-semibold"
+                    >Message:</label
+                  >
+                  <textarea
+                    class="form-control"
+                    id="message-text"
+                    name="comment"
+                    required
+                  ></textarea>
+                </div>
+              </form>
+            </div>
+            <!-- submit button -->
+            <div class="modal-footer">
+              <button form="review-form" type="submit" class="btn btn-primary">
+                Submit
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+
+
+  <!-- list of feedback given to employee by other -->
+  <div class="col-12 col-md-5">
+    <!-- heading -->
+    <h2 class="text-center my-2" style="color: #176B87;">Feedbacks by others for you:</h2>
+
+    <div
+      class="w-100 d-flex flex-col flex-wrap justify-content-center align-items-center"
+    >
+      <% for( j of feedbacks ) { %>
+
+        <!-- single feedback -->
+      <div class="card w-100 m-2 shadow-sm" style="background-color: #DAF5FF;">
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p class="fw-semibold"><%= j.comment %></p>
+            <footer class="blockquote-footer">by: <%= j.reviewer.name %></footer>
+          </blockquote>
+        </div>
+      </div>
+
+      <% } %>
+    </div>
+  </div>
+</div>

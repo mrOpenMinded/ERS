@@ -1,0 +1,48 @@
+
+<!-- login page -->
+
+<div class="w-100 h-100 d-flex justify-content-center align-items-center">
+    <form
+      action="/create-session"
+      method="POST"
+      class="col-11 col-md-9 col-lg-5 p-2 m-4 shadow rounded fw-semibold"
+      style="background-color: #cceeff;"
+    >
+      <!-- heading -->
+      <div class="text-center">
+        <h1 style="color: #176B87;">Login</h1>
+      </div>
+      <!-- email of user -->
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          name="email"
+          id="email"
+          required
+        />
+      </div>
+      <!-- password of user -->
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          name="password"
+          id="password"
+          required
+        />
+      </div>
+      <!-- submit button -->
+      <button type="submit" class="btn btn-primary">Login</button>
+      <div class="text-center">
+        <p>
+          <!-- link for sign up -->
+          Don't have an accout,
+          <a href="/sign-up">Sign Up</a>
+          instead.
+        </p>
+      </div>
+    </form>
+  </div>

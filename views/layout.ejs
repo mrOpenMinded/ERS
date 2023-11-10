@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- page title -->
+    <title><%= title %></title>
+
+    <!-- icon -->
+    <link rel="icon" type="image/x-icon" href="/image/brand-logo.png" />
+
+    <!-- include noty cdn for css and script-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+
+    <!-- jquery cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <!-- font awesome link -->
+    <script
+      src="https://kit.fontawesome.com/9c250245e3.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- bootstrap link -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body class="container-fluid m-0 p-0" style="background-color: #E4F1FF">
+    
+    <!-- navbar of page -->
+    <%- include('_header') %>
+
+    <!-- body content -->
+    <%- body %> 
+    
+    <!-- for individual page' script -->
+    <%- script%>
+
+    <script>
+
+      <% if (flash.success && flash.success.length > 0) { %> 
+          
+          new Noty({
+              theme:'relax',
+              text: '<%= flash.success %>',
+              type:'success',
+              layout:'topRight',
+              timeout:1500
+          }).show();
+
+      <% } %>
+
+      <% if (flash.error && flash.error.length > 0) { %> 
+          
+          new Noty({
+              theme:'relax',
+              text: '<%= flash.error %>',
+              type:'error',
+              layout:'topRight',
+              timeout:1500
+          }).show();
+
+      <% } %>
+
+
+  </script>
+
+    <!-- bootstrap script -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

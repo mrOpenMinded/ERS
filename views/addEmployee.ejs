@@ -1,0 +1,55 @@
+<!-- form for adding a new employee -->
+
+<div class="w-100 h-100 d-flex justify-content-center align-items-center">
+    <form
+      action="/dashboard/admin/createEmployee"
+      method="POST"
+      class="col-11 col-md-7 col-lg-5 p-2 py-3 mt-4 shadow rounded fw-semibold"
+      style="background-color: #cceeff;"
+    > 
+      <!-- heading -->
+      <div class="text-center">
+        <h1 style="color: #176B87;">Add Employee</h1>
+      </div>
+      <!-- input name -->
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" name="name" id="name" required />
+      </div>
+      <!-- email -->
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          name="email"
+          id="email"
+          required
+        />
+      </div>
+      <!-- password -->
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          name="password"
+          id="password"
+          required
+        />
+      </div>
+      <!-- confirm password -->
+      <div class="mb-3">
+        <label for="cnf_password" class="form-label">Confirm Password</label>
+        <input
+          type="password"
+          class="form-control"
+          name="cnf_password"
+          id="cnf_password"
+          required
+        />
+      </div>
+      <!-- submit -->
+      <button type="submit" class="btn btn-primary">Add Employee</button>
+    </form>
+  </div>
