@@ -2,7 +2,7 @@
 const User = require('../models/user');
 
 // feedback's model (database)
-const Feedback = require('../models/Feedback');
+const Feedback = require('../models/feedback');
 
 // for password encryption
 const bcrypt = require('bcryptjs');
